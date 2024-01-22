@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const Form = ({ putTodo }) => {
 	const [value, setValue] = useState('')
-
 	return (
 		<form
 			onSubmit={e => {
