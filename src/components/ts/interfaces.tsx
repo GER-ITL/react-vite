@@ -7,6 +7,20 @@ interface Rect {
 	}
 }
 
+const da: Array<number | string> = [1, 2, 3, 'fdsf']
+const O1: true = true
+
+type person = {
+	firstName: string
+	age: number
+	hasJob?: boolean
+}
+
+const alex: person = {
+	firstName: 'alex',
+	age: 12,
+}
+
 const rectOne: Rect = {
 	id: '123',
 	size: {

@@ -1,15 +1,27 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import '../src/styles/App.scss'
 import reactLogo from './assets/react.svg'
 import Entity from './components/Entity/Entity'
 import List from './components/List/List'
+import Nav from './components/Nav'
 import viteLogo from '/vite.svg'
-
 function App() {
 	const [count, setCount] = useState(0)
 	const [value, setValue] = useState('')
 	const [now, setNow] = useState(new Date())
+	const [users, setUsers] = useState([])
 
+	useEffect(() => {
+		const getUsers = () => {
+			axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
+				const data = response.data
+				setUsers(data)
+				console.log(data)
+			})
+		}
+		return getUsers
+	}, [])
 	setInterval(() => {
 		setNow(new Date())
 	}, 1000)
@@ -43,6 +55,7 @@ function App() {
 				Click on the Vite and React logos to learn more
 				<List />
 			</p>
+			<Nav />
 		</>
 	)
 }

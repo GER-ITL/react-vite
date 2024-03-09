@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 
-const Form = ({ putTodo }) => {
-	const [value, setValue] = useState('')
+const Form = ({ putValue }) => {
+	const [value, setValue] = useState<string | number>('')
 	return (
 		<form
 			onSubmit={e => {
 				e.preventDefault()
-				putTodo(value)
+				putValue(value)
 				setValue('')
 			}}
 		>
 			<input
-				placeholder='Enter value..'
 				type='text'
 				value={value}
-				onChange={e => setValue(e.target.value)}
+				onChange={e => {
+					setValue(e.target.value)
+				}}
 			/>
 		</form>
 	)
